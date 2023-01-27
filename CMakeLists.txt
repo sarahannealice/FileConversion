@@ -3,4 +3,4 @@ project(Assign1_Conversion)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(Assign1_Conversion main.cpp)
+add_executable(Assign1_Conversion src/main.cpp inc/conversion.h src/conversion.cpp)
