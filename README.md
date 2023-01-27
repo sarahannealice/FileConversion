@@ -39,12 +39,12 @@ int main() {
 the program should produce a text file with the following contents:
 ```
 \<PRE>
-#include \&lt;iostream\&gt;
+#include &lt;iostream&gt;
 
 int main() {
 	int x=4;
-	if(x \&lt; 3) x++;
-	cout \&lt;\&lt; x \&lt;\&lt; endl;
+	if(x &lt; 3) x++;
+	cout &lt;&lt; x &lt;&lt; endl;
 }
 \</PRE>
 ```
