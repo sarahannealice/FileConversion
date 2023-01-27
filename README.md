@@ -21,7 +21,7 @@ To avoid this problem, HTML uses special symbols to denote < and >. The < symbol
 string '\&lt;' while the > symbol is created with the string '\&gt;'.
 
 Write a program that reads a C++ source file and converts all < symbols to '\&lt;' and all > symbols to '\&gt;'.
-Also add the tag \<PRE> to the beginning of the file and </PRE> to the end of the file. This tag preserves
+Also add the tag \<PRE> to the beginning of the file and \</PRE> to the end of the file. This tag preserves
 whitespace and formatting in the HTML document. Your program should output the HTML file to a disk.
 
 As an example, given the following input file:
