@@ -11,12 +11,10 @@ int main() {
 //    cout << "Hello, World!" << endl;
 
     //---TO DO---//
-    //1. ask for user input (file path to read and print to)
-    //2. validate user input (check for whitespaces)
-    //3. read file content
-    //4. replace < > chevrons with &lt; &gt; respectively
-    //5. add <PRE> and </PRE> to the beginning and end of the file respectively
-    //6. write to new file with .html extension
+    //1. replace < > chevrons with &lt; &gt; respectively
+    //**above needs to be altered to replace both on same line
+    //2. add try catch statements
+    //3. add to validation to tell them what's wrong
 
     //variables
     string filePath;
@@ -58,13 +56,13 @@ int main() {
             result = convertFile(filePath, fileDest);
 
             if(result == 0) {
-                cout << "conversion complete" << endl;
+                cout << endl << "conversion complete" << endl;
             } else {
-                cout << "conversion unsuccessful" << endl;
+                cout << endl << "conversion unsuccessful" << endl;
             }
             break;
         } else {
-            cout << "That file path is invalid. Input a valid absolute file path: " << endl;
+            cout << endl << "That file path is invalid. Input a valid absolute file path: " << endl;
             getline(cin, filePath);
         }
     }//end while loop

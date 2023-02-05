@@ -13,23 +13,30 @@ using namespace std;
 int convertFile(string filePath, string fileDest) {
     regex chevronLeft ("[<]");
     regex chevronRight ("[>]");
+    char check;
     string myLine;
     string conversion;
 
-    ifstream myFile (filePath);
+    ifstream oldFile (filePath);
+    ofstream newFile (fileDest);
 
-    if (myFile.is_open()) {//checks if file is open
-        while (myFile) {//while loop to read entire file -- equivalent to myFile.good()
-            getline(myFile, myLine);//pipes content into stream
+    if (oldFile.is_open()) {//checks if file is open
+        newFile << "<PRE>" << endl;
 
+        while (oldFile) {//while loop to read entire file -- equivalent to myFile.good()
+            getline(oldFile, myLine);//pipes content into stream
+
+            //f statement to check symbols to replace
             if (regex_search(myLine, chevronLeft)) {
-                cout << regex_replace(myLine, chevronLeft, "\\&lt;") << endl;
+                newFile << regex_replace(myLine, chevronLeft, "\\&lt;") << endl;
             } else if (regex_search(myLine, chevronRight)) {
-                cout << regex_replace(myLine, chevronRight, "\\&gt") <<  endl;
+                newFile << regex_replace(myLine, chevronRight, "\\&gt") <<  endl;
             } else {
-                cout << myLine << endl;
+                newFile << myLine << endl;
             }
         }
+        newFile << "</PRE>" << endl;
+
     } else {//to catch if the file can't be opened
         cout << "couldn't open file\n";
         return 1;
