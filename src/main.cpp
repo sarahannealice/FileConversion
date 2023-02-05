@@ -55,7 +55,7 @@ int main() {
                 cout << "file could not be located" << endl;
             }
 
-            result = readFile(filePath, fileDest);
+            result = convertFile(filePath, fileDest);
 
             if(result == 0) {
                 cout << "conversion complete" << endl;
