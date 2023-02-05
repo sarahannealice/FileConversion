@@ -11,8 +11,11 @@
 using namespace std;
 
 int readFile(string filePath, string fileDest) {
+    regex chevronLeft ("[<]");
+    regex chevronRight ("[>]");
     char checkChar;
     string myLine;
+    string conversion;
     int counter = 1;
 
     //hardcoded filePath
@@ -23,15 +26,24 @@ int readFile(string filePath, string fileDest) {
         while (myFile) {//while loop to read entire file -- equivalent to myFile.good()
             getline(myFile, myLine);//pipes content into stream
 
-            //checks char, writes/replaces to destination file
-            while (myFile >> noskipws >> checkChar) {//source https://stackoverflow.com/a/12240035
-                if (checkChar == '<') {
-                    cout << checkChar;
-                    cout << " *this is a left chevron* ";
-                } else if (checkChar == '>') {
-                    cout << " *this is a right chevron* ";
-                }
+            if (regex_search(myLine, chevronLeft)) {
+                cout << regex_replace(myLine, chevronLeft, "\\&lt;") << endl;
+            } else if (regex_search(myLine, chevronRight)) {
+                cout << regex_replace(myLine, chevronRight, "\\&gt") <<  endl;
+            } else if (myLine != EOF){
+                cout << myLine << endl;
             }
+
+            //checks char, writes/replaces to destination file
+            //**want to come back and try this method at a later time**
+//            while (myFile >> noskipws >> checkChar) {//source https://stackoverflow.com/a/12240035
+//                if (checkChar == '<') {
+//                    cout << checkChar;
+//                    cout << " *this is a left chevron* ";
+//                } else if (checkChar == '>') {
+//                    cout << " *this is a right chevron* ";
+//                }
+//            }
 
 //            cout << "count#" << counter << ": " + myLine << endl;//pipes content to standard output
 //            counter++;
