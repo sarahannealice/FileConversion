@@ -8,7 +8,7 @@
 using namespace std;
 
 //custom exception, name inspired by betty boop
-class MyCustomException : public exception {
+struct MyCustomException : public exception {
 public:
     string oop() {
         return "oops! an error has occurred, one of both files do not exist\n"
