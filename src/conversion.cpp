@@ -16,10 +16,11 @@ int convertFile(string filePath, string fileDest) {
     string myLine;
     string conversion;
 
+    //potential unnecessary repeated code -- ask about
     ifstream oldFile (filePath);
     ofstream newFile (fileDest);
 
-    if (oldFile.is_open()) {//checks if file is open
+    if (oldFile.is_open()) {//checks if file is open -- should always be true with the try catches in main
         newFile << "<PRE>" << endl;
 
         //while there is a line in the file

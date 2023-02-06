@@ -7,6 +7,7 @@
 
 using namespace std;
 
+//custom exception, name inspired by betty boop
 class MyCustomException : public exception {
 public:
     string oop() {
@@ -24,7 +25,8 @@ int main() {
     bool  validPath = false;
 
     //file path regex
-    regex checkFilePath(".?:(\\\\[a-zA-Z 0-9()]*)*.[a-zA-Z]*.(txt)"); // https://stackoverflow.com/a/15710561
+    regex checkFilePath(".?:(\\\\[a-zA-Z 0-9()]*)*.[a-zA-Z]*.(cpp)"); // https://stackoverflow.com/a/15710561
+    regex checkFileDest(".?:(\\\\[a-zA-Z 0-9()]*)*.[a-zA-Z]*.(html)");
 
     cout << "Input the absolute file path for the desired file to be converted: ";
     getline(cin, filePath);
@@ -40,7 +42,7 @@ int main() {
             cout << "please input an absolute file path to write to: ";
             getline(cin, fileDest);
         }
-        if (regex_match(filePath, checkFilePath)) {
+        if (regex_match(filePath, checkFilePath) && regex_match(fileDest, checkFileDest)) {
             ifstream oldFile;
             ofstream newFile;
 
