@@ -7,15 +7,15 @@
 
 using namespace std;
 
+class MyCustomException : public exception {
+public:
+    string oop() {
+        return "oops! an error has occurred, one of both files do not exist\n"
+               "please check that the input file path is correct";
+    }
+};
+
 int main() {
-//    cout << "Hello, World!" << endl;
-
-    //---TO DO---//
-    //1. replace < > chevrons with &lt; &gt; respectively
-    //**above needs to be altered to replace both on same line
-    //2. add try catch statements
-    //3. add to validation to tell them what's wrong
-
     //variables
     string filePath;
     string fileDest;
@@ -41,19 +41,32 @@ int main() {
             getline(cin, fileDest);
         }
         if (regex_match(filePath, checkFilePath)) {
-            ifstream myFile;
-            myFile.open (filePath);
-            //send to file I/O method
-            cout << endl << "that's a valid path" << endl;
+            ifstream oldFile;
+            ofstream newFile;
 
             //check if file exists
             try {
-                (myFile);
+                (oldFile.open (filePath));
+                (newFile.open(fileDest));
+
+                result = convertFile(filePath, fileDest);
+            } catch (MyCustomException& betty) {//'&' is to catch by reference. suggested by clion
+                cout << betty.oop();
             } catch (exception& e) {
-                cout << "file could not be located" << endl;
+            } catch (...) {
+                cout << "unknown error occurred" << endl;
             }
 
-            result = convertFile(filePath, fileDest);
+            //check if file closed properly
+            try {
+                (oldFile.close());
+                (newFile.close());
+            } catch (exception& e) {//library
+                cout << "there has been an error caught by this library exception\n"
+                        "one or both files seem to have not closed properly" << endl;
+            } catch (...) {
+            cout << "unknown error occurred" << endl;
+            }
 
             if(result == 0) {
                 cout << endl << "conversion complete" << endl;
