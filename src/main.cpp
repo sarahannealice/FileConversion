@@ -44,7 +44,7 @@ int main() {
             ifstream myFile;
             myFile.open (filePath);
             //send to file I/O method
-            cout << "that's a valid path" << endl;
+            cout << endl << "that's a valid path" << endl;
 
             //check if file exists
             try {
