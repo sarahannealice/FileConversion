@@ -54,7 +54,6 @@ int main() {
                 result = convertFile(filePath, fileDest);
             } catch (MyCustomException& betty) {//'&' is to catch by reference. suggested by clion
                 cout << betty.oop();
-            } catch (exception& e) {
             } catch (...) {
                 cout << "unknown error occurred" << endl;
             }
@@ -79,6 +78,9 @@ int main() {
         } else {
             cout << endl << "That file path is invalid. Input a valid absolute file path: " << endl;
             getline(cin, filePath);
+
+            cout << endl << "Input a valid destination file path: " << endl;
+            getline(cin, fileDest);
         }
     }//end while loop
 
